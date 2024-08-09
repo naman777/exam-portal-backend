@@ -1,7 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import adminRoutes from "./routes/adminroutes.js";
+import testRoutes from "./routes/testRoutes.js";
+
 dotenv.config();
 
 const app = express();
@@ -11,8 +12,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(cors());
 
 //routes
-
-app.use("/api/admin",adminRoutes);
+app.use("/api/admin",testRoutes);
 
 
 app.listen(3000,()=>{

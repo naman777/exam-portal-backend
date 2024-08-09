@@ -15,7 +15,7 @@ const userSchema = new Schema({
         default: false
     },
     testSlot: {
-        type: Number,
+        type: String,
         default: 0
     },
     obtainedMarks: {

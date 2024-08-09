@@ -15,7 +15,7 @@ const questionSchema = new mongoose.Schema({
     },
     marks: {
         type: Number,
-        required: true
+        default:4
     }
 }, {
     timestamps: true 
