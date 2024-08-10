@@ -1,11 +1,11 @@
 import mongoose from 'mongoose';
 
 const testSchema = new mongoose.Schema({
-    time: {
-        type: String,
+    startTime: {
+        type: Date,
         required: true
     },
-    date: {
+    endTime:{
         type: Date,
         required: true
     },

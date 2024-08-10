@@ -3,9 +3,9 @@ import Test from '../db/testSchema';
 const router = express.Router();
 
 router.post('/create-test', async (req, res) => {
-    const { time, date, numberOfStudents, totalMarks } = req.body;
+    const { startTime, endTime, numberOfStudents, totalMarks } = req.body;
     try {
-        const newTest = new Test({ time, date, numberOfStudents, totalMarks });
+        const newTest = new Test({ startTime, endTime, numberOfStudents, totalMarks });
         await newTest.save();
         res.status(200).json({ message: 'Test created successfully', test: newTest });
     } catch (err) {
@@ -161,7 +161,5 @@ router.post('/codingquestion', async (req, res) => {
         res.status(500).json({ error: 'Failed to save coding question to test' });
     }
 });
-
-
 
 export default router;
