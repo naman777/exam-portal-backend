@@ -1,19 +1,27 @@
 import express from "express"
 import axios from "axios";
+import CodingQuestion from "../db/codingQuestionSchema";
 
-const apiUrl = process.env.API_URL;
 const url = "http://13.202.142.107:2358/submissions?base64_encoded=true";
 
-export const compilerHandler = async (req,res) => {
+const router = express.Router();
 
-    const { code,languageId,input } = req.body;
+
+router.post("/codingquestion",compilerHandler);
+
+const compilerHandler = async (req,res) => {
+
+    const { code,languageId,questionId } = req.body;
+    const question = await CodingQuestion.findById(questionId);
+    const input = question.sampleTestCase;
+    const output = question.sampleTestCaseAns;
     
     const data = {
         source_code: code,  
         language_id: languageId,
         number_of_runs: null,
         stdin: input,
-        expected_output: null,  
+        expected_output: output,  
         cpu_time_limit: null,
         cpu_extra_time: null,
         wall_time_limit: null,
